@@ -1,8 +1,8 @@
-GOPATH=`pwd`/../../../../
-GOBIN=$(GOPATH)bin/
+GOPATH?=`pwd`/../../../../
+GOBIN=$(GOPATH)/bin/
 GO=GOPATH=$(GOPATH) GOBIN=$(GOBIN) go
 APPS=\
-	mineshaft\
+	mineshaft \
 	mineshaft-bench
 
 OK_COLOR=\033[32;01m
@@ -19,12 +19,12 @@ build:
 
 run: build
 	@echo "$(OK_COLOR)==>$(NO_COLOR) Running"
-	$(GOBIN)mineshaft -f=mineshaft.conf
+	$(GOBIN)/mineshaft -f=mineshaft.conf
 
 test:
 	$(GO) test -v ./...
 
 clean:
-	rm -rf $(GOBIN)*
+	rm -rf $(GOBIN)/*
 
 .PHONY: build run test clean
